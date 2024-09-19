@@ -1,7 +1,7 @@
 <h1 align="center">Knowledge Graph Assistant using RAG GRAPH</h1>
 
 <p align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Your+Project+Banner" alt="Project Banner" width="800" height="400">
+  <img src="rag graph.png" alt="Project Banner" width="800" height="400">
 </p>
 
 <h2>Key Features and Accomplishments</h2>
