@@ -1,7 +1,4 @@
-# ragGraph
-developed a sophisticated Knowledge Graph Assistant
-
-<h1 align="center">Project Name</h1>
+<h1 align="center">sophisticated Knowledge Graph Assistant using RAG GRAPH</h1>
 
 <h2>Key Features and Accomplishments</h2>
 
