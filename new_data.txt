@@ -1,0 +1,106 @@
+// New Microservices
+CREATE (analytics:Microservice {name: 'AnalyticsService', technology: 'Python'})
+CREATE (notification:Microservice {name: 'NotificationService', technology: 'Go'})
+CREATE (search:Microservice {name: 'SearchService', technology: 'Elasticsearch'})
+CREATE (logging:Microservice {name: 'LoggingService', technology: 'ELK Stack'})
+
+// New Dependencies
+CREATE (ml:Dependency {name: 'MachineLearningModel', type: 'TensorFlow'})
+CREATE (stream:Dependency {name: 'StreamProcessing', type: 'Apache Kafka'})
+CREATE (nosql:Dependency {name: 'NoSQLDatabase', type: 'MongoDB'})
+
+// New Tasks
+CREATE (mlModelUpdate:Task {name: 'MLModelUpdate', description: 'Update machine learning model in AnalyticsService', status: 'In Progress', priority: 'High'})
+CREATE (notificationSystemOverhaul:Task {name: 'NotificationSystemOverhaul', description: 'Overhaul entire notification system', status: 'Open', priority: 'Medium'})
+CREATE (searchOptimization:Task {name: 'SearchOptimization', description: 'Optimize search algorithms', status: 'In Progress', priority: 'High'})
+CREATE (loggingInfrastructureUpgrade:Task {name: 'LoggingInfrastructureUpgrade', description: 'Upgrade logging infrastructure', status: 'Open', priority: 'Low'})
+
+// New Teams and People
+CREATE (teamE:Team {name: 'TeamE'})
+CREATE (teamF:Team {name: 'TeamF'})
+CREATE (grace:Person {name: 'Grace', role: 'Data Scientist'})
+CREATE (henry:Person {name: 'Henry', role: 'DevOps Engineer'})
+CREATE (isabel:Person {name: 'Isabel', role: 'UX Designer'})
+CREATE (jack:Person {name: 'Jack', role: 'Security Specialist'})
+
+// Relationships for new Microservices
+CREATE (analytics)-[:DEPENDS_ON]->(ml)
+CREATE (analytics)-[:DEPENDS_ON]->(nosql)
+CREATE (notification)-[:DEPENDS_ON]->(stream)
+CREATE (search)-[:DEPENDS_ON]->(nosql)
+CREATE (logging)-[:DEPENDS_ON]->(stream)
+
+CREATE (recommendation)-[:DEPENDS_ON]->(analytics)
+CREATE (order)-[:DEPENDS_ON]->(notification)
+CREATE (catalog)-[:DEPENDS_ON]->(search)
+CREATE (auth)-[:DEPENDS_ON]->(logging)
+
+// Relationships for new Tasks
+CREATE (mlModelUpdate)-[:LINKED_TO]->(analytics)
+CREATE (notificationSystemOverhaul)-[:LINKED_TO]->(notification)
+CREATE (searchOptimization)-[:LINKED_TO]->(search)
+CREATE (loggingInfrastructureUpgrade)-[:LINKED_TO]->(logging)
+
+CREATE (mlModelUpdate)-[:ASSIGNED_TO]->(teamE)
+CREATE (notificationSystemOverhaul)-[:ASSIGNED_TO]->(teamF)
+CREATE (searchOptimization)-[:ASSIGNED_TO]->(teamE)
+CREATE (loggingInfrastructureUpgrade)-[:ASSIGNED_TO]->(teamF)
+
+// Relationships for new Teams and People
+CREATE (grace)-[:MEMBER_OF]->(teamE)
+CREATE (henry)-[:MEMBER_OF]->(teamE)
+CREATE (isabel)-[:MEMBER_OF]->(teamF)
+CREATE (jack)-[:MEMBER_OF]->(teamF)
+
+CREATE (grace)-[:LEAD_OF]->(teamE)
+CREATE (isabel)-[:LEAD_OF]->(teamF)
+
+// Maintain relationships
+CREATE (analytics)-[:MAINTAINED_BY]->(teamE)
+CREATE (notification)-[:MAINTAINED_BY]->(teamF)
+CREATE (search)-[:MAINTAINED_BY]->(teamE)
+CREATE (logging)-[:MAINTAINED_BY]->(teamF)
+
+// Cross-team collaborations
+CREATE (teamA)-[:COLLABORATES_WITH]->(teamE)
+CREATE (teamB)-[:COLLABORATES_WITH]->(teamF)
+CREATE (teamC)-[:COLLABORATES_WITH]->(teamE)
+CREATE (teamD)-[:COLLABORATES_WITH]->(teamF)
+
+// Add some complexity with multi-team tasks
+CREATE (crossTeamTask:Task {name: 'CrossTeamOptimization', description: 'Optimize interaction between services', status: 'In Progress', priority: 'High'})
+CREATE (crossTeamTask)-[:INVOLVES]->(catalog)
+CREATE (crossTeamTask)-[:INVOLVES]->(order)
+CREATE (crossTeamTask)-[:INVOLVES]->(analytics)
+CREATE (crossTeamTask)-[:INVOLVES]->(notification)
+CREATE (crossTeamTask)-[:ASSIGNED_TO]->(teamA)
+CREATE (crossTeamTask)-[:ASSIGNED_TO]->(teamB)
+CREATE (crossTeamTask)-[:ASSIGNED_TO]->(teamE)
+CREATE (crossTeamTask)-[:ASSIGNED_TO]->(teamF)
+
+// Add some time-based properties to tasks
+SET mlModelUpdate.deadline = date('2023-12-31')
+SET notificationSystemOverhaul.deadline = date('2024-03-15')
+SET searchOptimization.deadline = date('2023-11-30')
+SET loggingInfrastructureUpgrade.deadline = date('2024-01-31')
+SET crossTeamTask.deadline = date('2024-06-30')
+
+// Add some performance metrics to microservices
+SET analytics.averageResponseTime = 150 // in milliseconds
+SET notification.averageResponseTime = 50 // in milliseconds
+SET search.averageResponseTime = 200 // in milliseconds
+SET logging.averageResponseTime = 30 // in milliseconds
+
+// Add some skills to people
+SET grace.skills = ['Machine Learning', 'Data Analysis', 'Python']
+SET henry.skills = ['Kubernetes', 'Docker', 'CI/CD']
+SET isabel.skills = ['UI/UX Design', 'User Research', 'Prototyping']
+SET jack.skills = ['Network Security', 'Penetration Testing', 'Compliance']
+
+// Add some project history
+CREATE (pastProject1:Project {name: 'ServiceMeshImplementation', status: 'Completed', completionDate: date('2023-06-30')})
+CREATE (pastProject2:Project {name: 'DatabaseMigration', status: 'Completed', completionDate: date('2023-09-15')})
+CREATE (teamA)-[:WORKED_ON]->(pastProject1)
+CREATE (teamC)-[:WORKED_ON]->(pastProject1)
+CREATE (teamB)-[:WORKED_ON]->(pastProject2)
+CREATE (teamD)-[:WORKED_ON]->(pastProject2)

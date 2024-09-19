@@ -1,0 +1,64 @@
+Test Queries for Extended Microservices Dataset
+Basic Queries
+
+List all microservices and their technologies.
+Show me all the dependencies of the AnalyticsService.
+Who is responsible for maintaining the NotificationService?
+What are the current open tasks?
+List all team members of TeamE.
+
+Relationship Queries
+
+Which microservices depend on the NoSQLDatabase?
+Show me all the microservices that the OrderService depends on.
+Which teams are collaborating with TeamA?
+List all tasks assigned to TeamF.
+What are the skills of the team lead for TeamE?
+
+Complex Queries
+
+Find all microservices that both depend on a NoSQLDatabase and have a task with 'High' priority.
+List all team members who are working on a task related to a microservice with an average response time greater than 100ms.
+Show me the path of dependencies from the OrderService to the LoggingService.
+Which microservices are involved in tasks that have team members with 'Python' skills assigned to them?
+Find all microservices that are maintained by teams that have worked on completed projects.
+
+Time-Based Queries
+
+What are the upcoming task deadlines for the next 3 months?
+List all tasks sorted by their deadline, along with their associated microservices and assigned teams.
+Which tasks are overdue (deadline has passed) and what microservices are they linked to?
+Show me all projects completed in the last 6 months and the teams that worked on them.
+What is the average time given for task completion (difference between creation date and deadline)?
+
+Performance and Optimization Queries
+
+List all microservices sorted by their average response time.
+Which microservice has the highest average response time and what tasks are currently linked to it?
+Find all 'Optimization' related tasks and their associated microservices' current performance metrics.
+Which team is responsible for the microservice with the lowest average response time?
+List all 'High' priority tasks that are linked to microservices with an average response time greater than 100ms.
+
+Cross-Team and Multi-Entity Queries
+
+Detail the CrossTeamOptimization task, including all involved microservices, assigned teams, and team members' skills.
+Which microservices are involved in tasks that span across more than two teams?
+List all team leads and the average response time of the microservices maintained by their teams.
+Find all microservices that are maintained by teams with members having both 'Machine Learning' and 'Security' skills.
+What is the distribution of task priorities across different microservices and teams?
+
+Analytical Queries
+
+What is the average number of dependencies per microservice?
+Which team is assigned the most 'High' priority tasks?
+What percentage of tasks are currently 'In Progress'?
+Which technology is most commonly used across all microservices?
+How many tasks, on average, are assigned to each team?
+
+Error Handling and Edge Cases
+
+Find information about a non-existent microservice named "FakeService".
+What happens if we try to find the team lead of a non-existent team?
+Try to list all tasks with an invalid priority level.
+Attempt to find dependencies of a microservice that has no dependencies.
+What is the result when we ask for the average response time of all microservices, including those without this metric?
